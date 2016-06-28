@@ -6,6 +6,8 @@ var temp = require("temp");
 var apiProxy = require("../");
 var httpEcho = require("./http-echo");
 
+var basic = require("basic-authorization-header");
+
 exports["requests are rate limited"] = function(test) {
     var server = startApiProxy();
     
@@ -99,7 +101,7 @@ function startApiProxy(options) {
                 interval: 100
             }
         ],
-        httpPort: proxyPort,
+        http: proxyPort,
         cachePath: cachePath
     };
     if (options.cacheAge) {
@@ -129,6 +131,7 @@ function startApiProxy(options) {
         } else {
             options.url = url(path);
         }
+        
         request(options, function(error, response, body) {
             var jsonBody = JSON.parse(body);
             callback(error, jsonBody.time, jsonBody.url);

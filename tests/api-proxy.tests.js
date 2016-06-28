@@ -1,10 +1,12 @@
 var request = require("request");
+var url = require("url");
 
 var apiProxy = require("../");
 
+var basic = require("basic-authorization-header");
 
 exports["500 error if site in request has not been configured"] = function(test) {
-    var proxyServer = apiProxy.startServer([], {httpPort: 50998});
+    var proxyServer = apiProxy.startServer([], {http: 50998});
     
     var requestOptions = {
         url: "http://localhost:50998/",
@@ -20,7 +22,7 @@ exports["500 error if site in request has not been configured"] = function(test)
 };
 
 exports["default interval is used if set and site in request has not been configured"] = function(test) {
-    var proxyServer = apiProxy.startServer([], {httpPort: 50998, defaultInterval: 1000});
+    var proxyServer = apiProxy.startServer([], {http: 50998, defaultInterval: 1000});
     
     var requestOptions = {
         url: "http://localhost:50998/",
@@ -33,3 +35,4 @@ exports["default interval is used if set and site in request has not been config
         test.done();
     });
 };
+

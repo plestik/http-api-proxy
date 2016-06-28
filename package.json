@@ -2,13 +2,14 @@
   "name": "http-api-proxy",
   "version": "0.2.4",
   "dependencies": {
+    "basic-authorization-header": "^0.2.7",
     "connect": "~2.7.11",
-    "http-proxy": "~0.10.2",
-    "rate-limit": "~0.1.0",
-    "connect-response-cache": "~0.2.1",
+    "connect-response-cache": "github:plestik/connect-response-cache#60937fb4abc626f63baccb3ee778f671f64988ce",
+    "http-proxy": "^1.14.0",
+    "mkdirp": "~0.3.5",
     "optimist": "~0.5.2",
-    "xdg": "~0.1.0",
-    "mkdirp": "~0.3.5"
+    "rate-limit": "~0.1.0",
+    "xdg": "~0.1.0"
   },
   "devDependencies": {
     "nodeunit": "~0.8.0",
